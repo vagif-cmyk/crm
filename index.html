@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Панель управления студентами</title>
+</head>
+<link rel="preload" href="/fonts/opensans-bold-webfont.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/opensans-regular-webfont.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/opensans-semibold-webfont.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="styles/normalize.css">
+<link rel="stylesheet" href="styles/style.css">
+<script defer src="js/main.js"></script>
+
+<body>
+
+  <header class="header">
+    <div class="header__wrapper">
+      <a href="/index.html" class="header__logo">
+        <div class="logo">bcm.</div>
+      </a>
+      <form class="header__form">
+        <input type="text" class="header__input" placeholder="Введите запрос">
+      </form>
+    </div>
+  </header>
+  <main class="main">
+    <section class="wrapp">
+      <div class="container">
+        <h1 class="table__title">Клиенты</h1>
+        <div class="table-wrapp">
+          <div class="preloader">
+            <div class="lds-ring">
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+            </div>
+          </div>
+          <table class="table">
+            <thead class="table__head">
+              <tr>
+                <th class="table__head-item id-title">ID <button class="arrow-icon-up" id="id" data-head="id"><svg
+                      width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M2 6L2.705 6.705L5.5 3.915L5.5 10L6.5 10L6.5 3.915L9.29 6.71L10 6L6 2L2 6Z"
+                        fill="#9873FF" />
+                    </svg>
+                  </button></th>
+                <th class="table__head-item name">Фамилия Имя Отчество <button class="arrow-icon-down" id="name"
+                    data-head="name"><svg width="8" height="8" viewBox="0 0 8 8" fill="none"
+                      xmlns="http://www.w3.org/2000/svg">
+                      <path d="M8 4L7.295 3.295L4.5 6.085L4.5 0L3.5 0L3.5 6.085L0.71 3.29L0 4L4 8L8 4Z"
+                        fill="#9873FF" />
+                    </svg>А-Я</button></th>
+                <th class="table__head-item create-at">Дата и время создания<button class="arrow-icon-down"
+                    id="createdAt" data-head="createdAt"><svg width="8" height="8" viewBox="0 0 8 8" fill="none"
+                      xmlns="http://www.w3.org/2000/svg">
+                      <path d="M8 4L7.295 3.295L4.5 6.085L4.5 0L3.5 0L3.5 6.085L0.71 3.29L0 4L4 8L8 4Z"
+                        fill="#9873FF" />
+                    </svg>
+                  </button></th>
+                <th class="table__head-item update-at">Последние изменения<button class="arrow-icon-down" id="updatedAt"
+                    data-head="updatedAt"><svg width="8" height="8" viewBox="0 0 8 8" fill="none"
+                      xmlns="http://www.w3.org/2000/svg">
+                      <path d="M8 4L7.295 3.295L4.5 6.085L4.5 0L3.5 0L3.5 6.085L0.71 3.29L0 4L4 8L8 4Z"
+                        fill="#9873FF" />
+                    </svg>
+                  </button></th>
+                <th class="table__head-item contacts">Контакты</th>
+                <th class="table__head-item actions">Действия</th>
+              </tr>
+            </thead>
+            <tbody class="table__body">
+
+            </tbody>
+          </table>
+        </div>
+        <div class="table__btn-box">
+          <button class="table__btn"><span class="table__btn-icon"></span>Добавить студента</button>
+        </div>
+      </div>
+
+    </section>
+
+  </main>
+</body>
+
+</html>

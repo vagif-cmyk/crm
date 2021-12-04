@@ -380,6 +380,41 @@ document.addEventListener('DOMContentLoaded', async () => {
       return false;
     }
   }
+  // проверяет правильность заполнения значения контакта на основе регулярного вырожения.
+  function isValidValue(title, value) {
+
+    const phone = /^\d+$/;
+    const text = /^[\wА-Яа-я./]+$/;
+    const mail = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+
+    switch (title) {
+      case 'Email':
+        return mail.test(value);
+
+      case 'Телефон':
+        return phone.test(value);
+
+      default:
+        return text.test(value);
+    }
+  }
+  // устанавливает текст ошибки в значении контакта
+  function setTextErr(element, target = 'default') {
+    if (target === 'default') {
+      element.textContent = 'Заполните это поле';
+    }
+    else if(target === 'Телефон'){
+      element.textContent = 'Могут быть введены только цифры';
+    }
+    else {
+      element.textContent = 'Введите валидное значение';
+    }
+    element.style.display = 'block';
+
+    setTimeout(() => {
+      element.style.display = 'none';
+    }, 2000);
+  }
   // провеляет заполнен ли каждый созданый контакт.
   function checkContacts() {
     let ok = true;
@@ -387,20 +422,23 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     if (contact) {
       const values = document.querySelectorAll('.contact__input-value');
+      const title = document.querySelectorAll('.contact__input-title');
       const contactErr = document.querySelectorAll('.contact__err');
 
       values.forEach((el, index) => {
         if (!el.value.trim()) {
           ok = false;
-
           el.focus();
 
-          contactErr[index].style.display = 'block';
-          setTimeout(() => {
-            contactErr[index].style.display = 'none';
-          }, 2000);
+          setTextErr(contactErr[index]);
         }
 
+        if (el.value.trim() && !isValidValue(title[index].value, el.value)) {
+          ok = false;
+          el.focus();
+
+          setTextErr(contactErr[index], title[index].value);
+        }
       });
     }
     return ok;
